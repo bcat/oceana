@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+import sys
+
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv
+
+    try:
+        _main(argv)
+    except SystemExit as e:
+        if isinstance(e.code, int):
+            return e.code
+        elif e.code is not None:
+            print(e.code, file=sys.stderr)
+            return 1
+
+    return 0
+
+def _main(argv):
+    pass
+
+if __name__ == '__main__':
+    sys.exit(main())
